@@ -335,13 +335,6 @@ body {
   font-weight: 700;
 }
 
-.preset-desc {
-  display: block;
-  font-size: 13px;
-  color: var(--muted);
-  margin-top: 2px;
-}
-
 .controls-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -662,12 +655,6 @@ input[type="range"] {
 
 .marker.voice-b {
   background: var(--accent-b);
-}
-
-.timeline-hint {
-  margin-top: 10px;
-  color: var(--muted);
-  font-size: 14px;
 }
 
 .legend {

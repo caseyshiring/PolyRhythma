@@ -84,7 +84,6 @@ const VOICE_COLORS = [
 type PresetConfig = {
   id: string;
   name: string;
-  description: string;
   tempo: number;
   voices: Array<Pick<VoiceConfig, "subdivision" | "noteId" | "key" | "restPattern" | "soundMode">>;
 };
@@ -93,7 +92,6 @@ const PRESET_CONFIGS: PresetConfig[] = [
   {
     id: "hemiola",
     name: "Hemiola 3:2",
-    description: "Classic 3 over 2 cross-accent.",
     tempo: 96,
     voices: [
       { subdivision: 3, noteId: "C4", key: "j" },
@@ -103,7 +101,6 @@ const PRESET_CONFIGS: PresetConfig[] = [
   {
     id: "tresillo",
     name: "Son clave 3-2",
-    description: "3-2 clave across two voices.",
     tempo: 100,
     voices: [
       {
@@ -125,7 +122,6 @@ const PRESET_CONFIGS: PresetConfig[] = [
   {
     id: "quintuple",
     name: "5:4 rubato",
-    description: "Gentle 5 over 4.",
     tempo: 84,
     voices: [
       { subdivision: 5, noteId: "D4", key: "j" },
@@ -135,7 +131,6 @@ const PRESET_CONFIGS: PresetConfig[] = [
   {
     id: "bossa",
     name: "Bossa nova",
-    description: "3-3-2 feel with offbeat accents.",
     tempo: 90,
     voices: [
       {
@@ -164,7 +159,6 @@ const PRESET_CONFIGS: PresetConfig[] = [
   {
     id: "paradiddle",
     name: "Paradiddle",
-    description: "RLRR LRLL split across two keys.",
     tempo: 96,
     voices: [
       { subdivision: 8, restPattern: "2, 5, 7, 8", noteId: "C4", key: "j", soundMode: "click" },
@@ -174,7 +168,6 @@ const PRESET_CONFIGS: PresetConfig[] = [
   {
     id: "ladder",
     name: "3:4:5 ladder",
-    description: "Stack 3, 4, 5 pulses.",
     tempo: 92,
     voices: [
       { subdivision: 3, noteId: "C4", key: "j", soundMode: "click" },
@@ -185,7 +178,6 @@ const PRESET_CONFIGS: PresetConfig[] = [
   {
     id: "four-stack",
     name: "2:3:4:5 stack",
-    description: "Four-voice polyrhythm.",
     tempo: 84,
     voices: [
       { subdivision: 2, noteId: "C4", key: "j", soundMode: "click" },
@@ -289,7 +281,7 @@ function renderLayout(): string {
               ${renderVoiceEditorList()}
             </div>
             <button class="ghost-button add-voice" id="add-voice" type="button" aria-label="Add voice">
-              <img src="/polyrhythm/icons/primary-tab-new.svg" class="add-voice-icon" alt="" aria-hidden="true" />
+              <img src="/PolyRhythma/icons/primary-tab-new.svg" class="add-voice-icon" alt="" aria-hidden="true" />
             </button>
           </div>
         </section>
@@ -302,7 +294,6 @@ function renderLayout(): string {
               (preset) => `
               <button class="preset-button" data-preset="${preset.id}">
                 <span class="preset-name">${preset.name}</span>
-                <span class="preset-desc">${preset.description}</span>
               </button>`,
             ).join("")}
           </div>
@@ -312,7 +303,7 @@ function renderLayout(): string {
       <section class="panel timeline">
         <div class="panel-header">
           <div>
-            <h2>Polyrhythm Player</h2>
+            <h2>PolyRhythma Player</h2>
           </div>
           <button class="primary-button" id="start-stop" type="button">Start playback</button>
         </div>
@@ -320,7 +311,6 @@ function renderLayout(): string {
           <div class="timeline-progress" id="timeline-progress"></div>
           <div class="timeline-lanes" id="timeline-lanes" aria-label="Voice timelines"></div>
         </div>
-        <p class="timeline-hint">Markers show where each pulse lands inside the shared loop.</p>
       </section>
 
       <section class="panel stats">
